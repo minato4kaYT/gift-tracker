@@ -1,0 +1,30 @@
+# secrets / env
+.env
+.env.*
+!.env.example
+*.session
+*.session-journal
+
+# data / db
+*.db
+*.sqlite
+*.sqlite3
+data/
+instances/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# logs / media / backups
+*.log
+*.bak
+*.bak-*
+*.mp4
+*.webm
+
+# os
+.DS_Store

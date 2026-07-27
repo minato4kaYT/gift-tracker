@@ -1,0 +1,117 @@
+:root{
+  --bg:#09090b; --surface:#101012; --surface2:#15151a;
+  --hair:rgba(255,255,255,.07); --hair2:rgba(255,255,255,.13);
+  --txt:#f4f4f5; --dim:#a0a0ab; --dim2:#67676f;
+  --wm:linear-gradient(180deg,#ffffff 0%,#b9bcc6 130%);
+  --r:18px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:
+    radial-gradient(120% 55% at 50% 0,rgba(255,255,255,.06),transparent 55%) no-repeat,
+    var(--bg);min-height:100%}
+html,body{margin:0;padding:0;color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;overscroll-behavior:none}
+body{max-width:480px;margin:0 auto;padding:0 18px calc(40px + env(safe-area-inset-bottom));
+  position:relative;z-index:1}
+.svg-sprite{position:absolute;width:0;height:0}
+.ic{width:1.1em;height:1.1em;display:inline-block;vertical-align:-.16em;flex:none;color:inherit}
+
+/* фон вынесен на html (фиксированный слой провоцировал баг перерисовки в WebView) */
+.bg{display:none}
+
+/* без анимации появления — контент всегда видим (в Telegram WebView entrance-анимация
+   с opacity:0 иногда не отрабатывала и блоки пропадали) */
+.reveal{opacity:1}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;
+  padding:22px 2px 18px}
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  color:var(--txt);background:var(--surface2);border:1px solid var(--hair2)}
+.mark .ic{width:19px;height:19px}
+.wordmark{font-weight:700;font-size:16px;letter-spacing:-.2px}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;
+  letter-spacing:.6px;text-transform:uppercase;color:var(--dim);
+  padding:6px 11px 6px 10px;border-radius:999px;border:1px solid var(--hair);background:var(--surface)}
+.live i{width:6px;height:6px;border-radius:50%;background:#3ad07a;
+  box-shadow:0 0 0 0 rgba(58,208,122,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,208,122,.5)}70%{box-shadow:0 0 0 7px rgba(58,208,122,0)}100%{box-shadow:0 0 0 0 rgba(58,208,122,0)}}
+
+/* hero */
+.hero{padding:14px 2px 4px}
+.kicker{font-size:11.5px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;
+  color:var(--dim2)}
+.hero h1{font-size:36px;line-height:1.04;font-weight:800;letter-spacing:-1.1px;
+  margin:13px 0 14px}
+.hero h1 .muted-h{color:var(--dim)}
+.hero h1 .pct{color:#f5c451}
+.lead{font-size:14px;line-height:1.6;color:var(--dim);margin:0;max-width:38ch}
+
+/* метрики */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.metric{background:var(--surface);border:1px solid var(--hair);border-radius:14px;
+  padding:14px 12px;text-align:center}
+.m-n{font-size:20px;font-weight:750;letter-spacing:-.4px;font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;justify-content:center;gap:1px;min-height:24px}
+.m-n .mstar{width:15px;height:15px;color:#f5c451;vertical-align:0}
+.m-l{font-size:11px;color:var(--dim2);margin-top:5px;letter-spacing:.2px}
+
+/* секции */
+.sec{margin-top:34px}
+.sec-h{display:flex;align-items:center;gap:14px;margin:0 2px 16px}
+.sec-h span{font-size:12px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--dim)}
+.sec-h .hr{flex:1;height:1px;background:var(--hair)}
+
+/* карточки «что внутри» */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.card{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r);
+  padding:16px 15px;transition:border-color .2s,transform .2s}
+.card:active{transform:scale(.99);border-color:var(--hair2)}
+.c-i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  color:var(--txt);background:var(--surface2);border:1px solid var(--hair);margin-bottom:12px}
+.c-i .ic{width:18px;height:18px}
+.card h3{font-size:14px;font-weight:650;margin:0 0 5px;letter-spacing:-.1px}
+.card h3 .pct{color:#f5c451;-webkit-text-fill-color:#f5c451}
+.card p{font-size:12px;line-height:1.5;color:var(--dim);margin:0}
+
+/* шаги — таймлайн */
+.flow{list-style:none;margin:0;padding:0 0 0 6px;position:relative}
+.flow::before{content:"";position:absolute;left:6px;top:7px;bottom:18px;width:1px;background:var(--hair)}
+.flow li{position:relative;padding:0 0 18px 26px}
+.flow li:last-child{padding-bottom:0}
+.flow li::before{content:"";position:absolute;left:1px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--hair2)}
+.flow li:last-child::before{background:var(--txt);border-color:var(--txt)}
+.f-h{display:flex;align-items:baseline;gap:9px}
+.f-n{font-size:11px;font-weight:700;color:var(--dim2);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.f-h b{font-size:14.5px;font-weight:650;letter-spacing:-.1px}
+.f-h .pct,.f-h .fee{color:#f5c451}
+.flow p{margin:5px 0 0;font-size:12.5px;line-height:1.5;color:var(--dim)}
+.sstar{width:13px;height:13px;color:#f5c451;vertical-align:-.12em}
+
+/* автор */
+.author{display:flex;align-items:center;gap:13px;background:var(--surface);
+  border:1px solid var(--hair);border-radius:var(--r);padding:15px}
+.a-ava{width:50px;height:50px;border-radius:14px;flex:none;display:grid;place-items:center;
+  color:var(--txt);background:var(--surface2);border:1px solid var(--hair2)}
+.a-ava .ic{width:26px;height:26px}
+.a-body{flex:1;min-width:0}
+.a-name{font-size:16px;font-weight:700;letter-spacing:-.2px}
+.a-status{font-size:12px;color:var(--dim);margin-top:3px}
+.a-btn{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;
+  text-decoration:none;color:var(--bg);background:var(--txt);transition:transform .15s}
+.a-btn:active{transform:scale(.94)}
+.a-btn .ic{width:18px;height:18px}
+
+/* CTA */
+.cta{width:100%;margin-top:30px;display:flex;align-items:center;justify-content:space-between;
+  border:0;border-radius:16px;padding:17px 20px;font-size:15.5px;font-weight:700;letter-spacing:-.1px;
+  color:var(--bg);background:var(--wm);cursor:pointer;transition:transform .15s,filter .15s}
+.cta:active{transform:scale(.985);filter:brightness(.94)}
+.cta span{display:inline-flex;align-items:center;gap:9px}
+.cta .ic{width:18px;height:18px}
+.cta .ar{opacity:.7}
+
+.foot{text-align:center;font-size:11px;color:var(--dim2);margin:20px 0 0;line-height:1.5}
